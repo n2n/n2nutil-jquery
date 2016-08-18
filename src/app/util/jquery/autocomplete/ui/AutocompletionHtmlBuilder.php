@@ -1,12 +1,12 @@
 <?php
 namespace util\jquery\autocomplete\ui;
 
-use n2n\ui\view\impl\html\HtmlUtils;
-use n2n\ui\view\impl\html\InputSelect;
-use n2n\ui\view\impl\html\HtmlView;
-use n2n\ui\view\impl\html\HtmlBuilder;
+use n2n\web\ui\view\impl\html\HtmlUtils;
+use n2n\web\ui\view\impl\html\InputSelect;
+use n2n\web\ui\view\impl\html\HtmlView;
+use n2n\web\ui\view\impl\html\HtmlBuilder;
 use n2n\util\StringUtils;
-use n2n\ui\view\impl\html\HtmlBuilderMeta;
+use n2n\web\ui\view\impl\html\HtmlBuilderMeta;
 class AutocompletionHtmlBuilder {
 	private $view;
 	
