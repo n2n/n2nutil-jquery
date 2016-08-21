@@ -1,13 +1,13 @@
 <?php
 namespace util\jquery\datepicker;
 
-use n2n\web\ui\view\impl\html\HtmlElement;
+use n2n\impl\web\ui\view\html\HtmlElement;
 use n2n\web\dispatch\map\PropertyPath;
 use n2n\web\dispatch\ui\Form;
 use util\jquery\datepicker\DatePickerUtils;
-use n2n\web\ui\view\impl\html\HtmlUtils;
+use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\reflection\CastUtils;
-use n2n\web\dispatch\property\impl\DateTimeProperty;
+use n2n\impl\web\dispatch\property\DateTimeProperty;
 use n2n\l10n\L10nUtils;
 use n2n\web\dispatch\target\build\ParamHandler;
 
@@ -21,7 +21,7 @@ class InputDatePickerFactory {
 	}
 	
 	public function create(PropertyPath $propertyPath, array $attrs = null) {
-		$result = $this->resolver->analyze($propertyPath, array('n2n\web\dispatch\property\impl\DateTimeProperty'), false);
+		$result = $this->resolver->analyze($propertyPath, array('n2n\impl\web\dispatch\property\DateTimeProperty'), false);
 		$dateTimeProperty = $result->getManagedProperty();
 		CastUtils::assertTrue($dateTimeProperty instanceof DateTimeProperty);
 		

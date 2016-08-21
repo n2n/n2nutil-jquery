@@ -1,13 +1,13 @@
 <?php
 namespace util\jquery\datepicker;
 
-use n2n\web\ui\view\impl\html\HtmlView;
+use n2n\impl\web\ui\view\html\HtmlView;
 use n2n\l10n\N2nLocale;
-use n2n\web\ui\view\impl\html\HtmlUtils;
+use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\l10n\DateTimeFormat;
-use n2n\web\ui\view\impl\html\HtmlElement;
+use n2n\impl\web\ui\view\html\HtmlElement;
 use util\jquery\datepicker\DatePickerUtils;
-use n2n\web\ui\view\impl\html\HtmlBuilderMeta;
+use n2n\impl\web\ui\view\html\HtmlBuilderMeta;
 
 class DatePickerHtmlBuilder {
 	private $view; 
