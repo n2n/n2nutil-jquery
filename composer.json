@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "util\\jquery": "src/app/util/jquery"
+            "util\\jquery\\": "src/app/util/jquery"
         }
     }
 }
