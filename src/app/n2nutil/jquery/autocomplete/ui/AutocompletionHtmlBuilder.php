@@ -1,5 +1,5 @@
 <?php
-namespace util\jquery\autocomplete\ui;
+namespace n2nutil\jquery\autocomplete\ui;
 
 use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\impl\web\ui\view\html\InputSelect;
@@ -35,6 +35,6 @@ class AutocompletionHtmlBuilder {
 		$html = $this->view->getHtmlBuilder();
 		//@todo add jQueryLibrary
 		//$html->meta()->addLibrary(new JQueryLibrary());
-		$html->meta()->addJs('autocomplete/js/autocomplete.js', 'util\jquery', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
+		$html->meta()->addJs('autocomplete/js/autocomplete.js', 'n2nutil\jquery', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
 	}
 }

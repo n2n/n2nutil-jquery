@@ -1,9 +1,9 @@
 <?php
-namespace util\jquery\datepicker\pseudo;
+namespace n2nutil\jquery\datepicker\pseudo;
 
-use util\jquery\datepicker\DatePickerOptionsFactory;
-use util\jquery\datepicker\DatePickerOptions;
-use util\jquery\datepicker\DateTimeLiteralGenerator;
+use n2nutil\jquery\datepicker\DatePickerOptionsFactory;
+use n2nutil\jquery\datepicker\DatePickerOptions;
+use n2nutil\jquery\datepicker\DateTimeLiteralGenerator;
 class DefaultDatePickerOptionsFactory implements DatePickerOptionsFactory {
 
 	public function createDatePickerOptions($pattern) {

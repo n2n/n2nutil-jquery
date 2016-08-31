@@ -1,12 +1,12 @@
 <?php
-namespace util\jquery\datepicker;
+namespace n2nutil\jquery\datepicker;
 
 use n2n\impl\web\ui\view\html\HtmlView;
 use n2n\l10n\N2nLocale;
 use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\l10n\DateTimeFormat;
 use n2n\impl\web\ui\view\html\HtmlElement;
-use util\jquery\datepicker\DatePickerUtils;
+use n2nutil\jquery\datepicker\DatePickerUtils;
 use n2n\impl\web\ui\view\html\HtmlBuilderMeta;
 
 class DatePickerHtmlBuilder {
@@ -53,7 +53,7 @@ class DatePickerHtmlBuilder {
 		$html = $this->view->getHtmlBuilder();
 		//@todo add jQueryLibrary
 		//$html->meta()->addLibrary(new JQueryLibrary());
-		$html->meta()->addJs('datepicker/js/datePicker.js', 'util\jquery', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
-		$html->meta()->addCss('datepicker/css/datePicker.css', 'screen', 'util\jquery');
+		$html->meta()->addJs('datepicker/js/datePicker.js', 'n2nutil\jquery', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
+		$html->meta()->addCss('datepicker/css/datePicker.css', 'screen', 'n2nutil\jquery');
 	}
 }

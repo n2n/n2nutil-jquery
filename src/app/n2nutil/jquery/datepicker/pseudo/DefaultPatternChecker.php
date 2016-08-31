@@ -1,5 +1,5 @@
 <?php
-namespace util\jquery\datepicker\pseudo;
+namespace n2nutil\jquery\datepicker\pseudo;
 
 class DefaultPatternChecker {
 	

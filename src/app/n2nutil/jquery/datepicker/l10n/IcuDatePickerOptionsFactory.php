@@ -1,11 +1,11 @@
 <?php
-namespace util\jquery\datepicker\l10n;
+namespace n2nutil\jquery\datepicker\l10n;
 
-use util\jquery\datepicker\DateTimeLiteralGenerator;
+use n2nutil\jquery\datepicker\DateTimeLiteralGenerator;
 use n2n\l10n\SimpleDateTimeFormat;
 use n2n\l10n\N2nLocale;
-use util\jquery\datepicker\DatePickerOptionsFactory;
-use util\jquery\datepicker\DatePickerOptions;
+use n2nutil\jquery\datepicker\DatePickerOptionsFactory;
+use n2nutil\jquery\datepicker\DatePickerOptions;
 
 class IcuDatePickerOptionsFactory implements DatePickerOptionsFactory {
 	const ICU_LOCALE_DAY_OF_WEEK_PATTERN = 'e';

@@ -1,5 +1,5 @@
 <?php
-namespace util\jquery\datepicker;
+namespace n2nutil\jquery\datepicker;
 
 use n2n\util\StringUtils;
 
