@@ -1,11 +1,11 @@
 <?php
-namespace n2nutil\jquery\datepicker;
+namespace n2nn2nutil\jquery\datepicker;
 
 use n2n\l10n\DateTimeFormat;
 use n2n\l10n\L10nUtils;
-use n2nutil\jquery\datepicker\l10n\IcuDatePickerOptionsFactory;
+use n2nn2nutil\jquery\datepicker\l10n\IcuDatePickerOptionsFactory;
 use n2n\l10n\N2nLocale;
-use n2nutil\jquery\datepicker\pseudo\DefaultDatePickerOptionsFactory;
+use n2nn2nutil\jquery\datepicker\pseudo\DefaultDatePickerOptionsFactory;
 use n2n\l10n\L10n;
 
 class DatePickerUtils {
