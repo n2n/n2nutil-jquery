@@ -1,5 +1,5 @@
 <?php
-namespace n2nn2nutil\jquery;
+namespace n2nutil\jquery;
 
 use n2n\impl\web\ui\view\html\HtmlView;
 use n2n\impl\web\ui\view\html\LibraryAdapter; 
@@ -13,6 +13,6 @@ class JQueryLibrary extends LibraryAdapter {
 	}
 	
 	public function apply(HtmlView $view, HtmlBuilderMeta $htmlMeta) {
-		$htmlMeta->addJs('jquery-2.2.4.min.js', 'n2nn2nutil\jquery', $this->defer);
+		$htmlMeta->addJs('jquery-2.2.4.min.js', 'n2nutil\jquery', $this->defer);
 	}	
 }

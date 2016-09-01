@@ -1,6 +1,6 @@
 <?php
 
-namespace n2nn2nutil\jquery\datepicker\l10n;
+namespace n2nutil\jquery\datepicker\l10n;
 
 class IcuPatternChecker {
 	

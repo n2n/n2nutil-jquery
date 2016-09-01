@@ -1,5 +1,5 @@
 <?php
-namespace n2nn2nutil\jquery\datepicker;
+namespace n2nutil\jquery\datepicker;
 
 use n2n\l10n\SimpleDateTimeFormat;
 use n2n\l10n\N2nLocale;
