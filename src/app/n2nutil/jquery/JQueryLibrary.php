@@ -30,6 +30,6 @@ class JQueryLibrary extends LibraryAdapter {
 		}
 		
 		$htmlMeta->addJs($jsName, 'n2nutil\jquery', false, false, null,
-				($this->bodyEnd ? HtmlBuilderMeta::TARGET_BODY_END : HtmlBuilderMeta::TARGET_BODY_START));
+				($this->bodyEnd ? HtmlBuilderMeta::TARGET_BODY_END : HtmlBuilderMeta::TARGET_HEAD));
 	}	
 }
