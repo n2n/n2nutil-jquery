@@ -5,7 +5,7 @@ n2n.dispatch.registerCallback(function () {
 		updateEnabler(this);
 	};
 	
-	for (var i in enablerElems) {
+	for (var i = 0, ii = enablerElems.length; i < ii; i++) {
 		enablerElems[i].removeEventListener("click", callback);
 		enablerElems[i].addEventListener("click", callback);
 		
@@ -13,12 +13,12 @@ n2n.dispatch.registerCallback(function () {
 	}
 	
 	function updateEnabler(elem) {
-		var displayClassName = elem.checked ? 'block' : 'none';
+		var displayTypeName = elem.checked ? "block" : "none";
 		var groupClassName = elem.getAttribute("data-n2nutil-jquery-enabler-class");
 	
 		var groupElems = document.getElementsByClassName(groupClassName);
-		for (var i in groupElems) {
-			groupElems[i].style.display = displayClassName;
+		for (var i = 0, ii = groupElems.length; i < ii; i++) {
+			groupElems[i].style.display = displayTypeName;
 		}
 	}
 });
