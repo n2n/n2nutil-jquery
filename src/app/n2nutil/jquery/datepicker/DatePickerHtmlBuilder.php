@@ -17,9 +17,9 @@ class DatePickerHtmlBuilder {
 	}
 	
 	public function getDatePicker($dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null, 
-			\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, Locale $locale = null) {
+			\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, N2nLocale $locale = null) {
 		if (null == $locale) {
-			$locale = $this->view->getRequest()->getLocale();
+			$locale = $this->view->getRequest()->getN2nLocale();
 		}
 		$attrs = $this->extendAttrs($attrs);
 		$this->requireScripts($attrs['id']);
@@ -29,7 +29,7 @@ class DatePickerHtmlBuilder {
 	}
 	
 	public function datePicker($dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null, 
-			\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, Locale $locale = null) {
+			\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, N2nLocale $locale = null) {
 		$this->view->out($this->getDatePicker($dateStyle, $timeStyle, $timeZone, $simpleFormat, $attrs, $locale));
 	}
 	
@@ -53,6 +53,7 @@ class DatePickerHtmlBuilder {
 		$html = $this->view->getHtmlBuilder();
 		//@todo add jQueryLibrary
 		//$html->meta()->addLibrary(new JQueryLibrary());
+		$html->meta()->bodyEnd()->addJs('js/ajah.js', 'n2n\impl\web\ui');
 		$html->meta()->addJs('datepicker/js/datePicker.js', 'n2nutil\jquery', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
 		$html->meta()->addCss('datepicker/css/datePicker.css', 'screen', 'n2nutil\jquery');
 	}
