@@ -20,20 +20,20 @@ class FancyBoxLibrary extends LibraryAdapter {
 		$jsName = null;
 		switch ($this->version) {
 			case 2:
-				$jsName = '/fancybox-2/js/jquery.fancybox.js';
-				$cssName = '/fancybox-2/css/jquery.fancybox.css';
+				$jsName = 'fancybox/fancybox-2/js/jquery.fancybox.js';
+				$cssName = 'fancybox/fancybox-2/css/jquery.fancybox.css';
 				break;
 			case 3:
-				$jsName = '/fancybox-3/dist/jquery.fancybox.min.min.js';
-				$cssName = '/fancybox-3/dist/jquery.fancybox.min.css';
+				$jsName = 'fancybox/fancybox-3/dist/jquery.fancybox.min.js';
+				$cssName = 'fancybox/fancybox-3/dist/jquery.fancybox.min.css';
 				break;
 		}
 		
 		$htmlMeta->addLibrary(new JQueryLibrary(3, $this->bodyEnd));
 		
-		$htmlMeta->addCss($cssName, 'screen', 'n2nutil\jquery\fancybox', false, null,
+		$htmlMeta->addCss($cssName, 'screen', 'n2nutil\jquery', false, null,
 				($this->bodyEnd ? HtmlBuilderMeta::TARGET_BODY_END : HtmlBuilderMeta::TARGET_HEAD));
-		$htmlMeta->addJs($jsName, 'n2nutil\jquery\fancybox', false, false, null,
+		$htmlMeta->addJs($jsName, 'n2nutil\jquery', false, false, null,
 				($this->bodyEnd ? HtmlBuilderMeta::TARGET_BODY_END : HtmlBuilderMeta::TARGET_HEAD));
 	}	
 }
