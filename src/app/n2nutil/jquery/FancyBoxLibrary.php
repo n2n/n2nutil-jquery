@@ -29,7 +29,7 @@ class FancyBoxLibrary extends LibraryAdapter {
 				break;
 		}
 		
-		$htmlMeta->addLibrary(new JQueryLibrary(3));
+		$htmlMeta->addLibrary(new JQueryLibrary(3, $this->bodyEnd));
 		
 		$htmlMeta->addCss($cssName, 'screen', 'n2nutil\jquery\fancybox', false, null,
 				($this->bodyEnd ? HtmlBuilderMeta::TARGET_BODY_END : HtmlBuilderMeta::TARGET_HEAD));
