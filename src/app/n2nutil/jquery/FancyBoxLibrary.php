@@ -20,12 +20,12 @@ class FancyBoxLibrary extends LibraryAdapter {
 		$jsName = null;
 		switch ($this->version) {
 			case 2:
-				$jsName = '\fancybox-2\js\jquery.fancybox.js';
-				$cssName = '\fancybox-2\css\jquery.fancybox.css';
+				$jsName = '/fancybox-2/js/jquery.fancybox.js';
+				$cssName = '/fancybox-2/css/jquery.fancybox.css';
 				break;
 			case 3:
-				$jsName = '\fancybox-3\dist\jquery.fancybox.min.min.js';
-				$cssName = '\fancybox-3\dist\jquery.fancybox.min.css';
+				$jsName = '/fancybox-3/dist/jquery.fancybox.min.min.js';
+				$cssName = '/fancybox-3/dist/jquery.fancybox.min.css';
 				break;
 		}
 		
