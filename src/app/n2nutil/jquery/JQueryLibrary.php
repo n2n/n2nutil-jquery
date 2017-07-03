@@ -7,8 +7,8 @@ use n2n\impl\web\ui\view\html\HtmlBuilderMeta;
 use n2n\reflection\ArgUtils;
 
 class JQueryLibrary extends LibraryAdapter {
-	private $version;
-	private $bodyEnd;
+	protected $version;
+	protected $bodyEnd;
 	
 	public function __construct(int $version, bool $bodyEnd = false) {
 		ArgUtils::valEnum($version, array(1, 2, 3));
