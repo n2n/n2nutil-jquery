@@ -1116,7 +1116,7 @@ jQuery(document).ready(function($) {
 			var _obj = this;
 			navigation.prevClickCallback = function() {
 				var date = _obj.datePicker.date;
-				_obj.datePicker.date = new Date(date.getFullYear(), date.getMonth() - 1, date.getDay());
+				_obj.datePicker.date = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate());
 				navigation.setLabelText(_obj.getSelectedMonthName());
 				_obj.drawCalender();
 			};
@@ -1128,6 +1128,10 @@ jQuery(document).ready(function($) {
 			navigation.nextClickCallback = function() {
 				var date = _obj.datePicker.date;
 				_obj.datePicker.date = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate());
+				if (_obj.datePicker.date.getMonth() > date.getMonth() + 1) {
+					_obj.datePicker.date = new Date(date.getFullYear(), date.getMonth() + 2, 0);
+				}
+				
 				navigation.setLabelText(_obj.getSelectedMonthName());
 				_obj.drawCalender();
 			}
@@ -1234,7 +1238,7 @@ jQuery(document).ready(function($) {
 					currentRow = $('<tr/>').appendTo(this.jqElemTableBody);
 				}
 				
-				var date = new Date(this.datePicker.date.getFullYear(), i, this.datePicker.date.getDate());
+				var date = new Date(this.datePicker.date.getFullYear(), i, 1);
 				var month = new Month(this);
 				this.months.push(month);
 				if (DateUtils.areDatesInSameMonth(date, this.datePicker.date)) {
