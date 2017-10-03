@@ -842,8 +842,10 @@ jQuery(document).ready(function($) {
 			
 			if (null !== this.iconClassNameOpen) {
 				this.jqElemAOpener = $("<a/>", {
-					"class": "util-jquery-datepicker-opener rocket-control"
-				}).append($("<i/>").addClass(this.iconClassNameOpen)).click(function() {
+					"class": "util-jquery-datepicker-opener rocket-control",
+					"href": "#"
+				}).append($("<i/>").addClass(this.iconClassNameOpen)).click(function(e) {
+					e.preventDefault();
 					//hide other Datepicker
 					if (!_obj.jqElem.is(":visible")) {
 						$(".util-jquery-date-picker").hide();
@@ -851,7 +853,6 @@ jQuery(document).ready(function($) {
 					} else {
 						_obj.hide();
 					}
-					return false;
 				}).insertAfter(this.jqElemInput); 
 			}
 			
