@@ -22,6 +22,18 @@ jQuery(document).ready(function($) {
 			return date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear();
 		};
 		
+		DateUtils.isMonthBiggerOrEqual = function(date1, date2) {
+			if (null == date1 || null == date2) return false;
+			
+			return date1.getMonth() >= date2.getMonth() && date1.getFullYear() == date2.getFullYear();
+		};
+		
+		DateUtils.isYearBiggerOrEqual = function(date1, date2) {
+			if (null == date1 || null == date2) return false;
+			
+			return date1.getFullYear() >= date2.getFullYear();
+		};
+		
 		DateUtils.areDatesInSameYear = function(date1, date2) {
 			if (null == date1 || null == date2) return false;
 			return date1.getFullYear() == date2.getFullYear();
@@ -33,6 +45,14 @@ jQuery(document).ready(function($) {
 			var fullYearDate2 = date2.getFullYear();
 			return ((fullYearDate1 - (fullYearDate1 % 10)) ==
 					(fullYearDate2 - (fullYearDate2 % 10)));
+			
+		};
+		DateUtils.isDecadeBiggerOrEqual = function(date1, date2) {
+			if (null == date1 || null == date2) return false;
+			var fullYearDate1 = date1.getFullYear();
+			var fullYearDate2 = date2.getFullYear();
+			return ((fullYearDate1 - (fullYearDate1 % 10)) >=
+				(fullYearDate2 - (fullYearDate2 % 10)));
 			
 		};
 		//////////////////
@@ -658,8 +678,9 @@ jQuery(document).ready(function($) {
 			var _obj = this;
 			this.date = null;
 			this.jqElemTd = $("<td/>").on('click.pickable', function() {
-				if (null == _obj.date || (null !== _obj.firstSelectableDate 
-						&& _obj.firstSelectableDate > _obj.date)) return;
+				if (null == _obj.date) return;
+				if (null !== _obj.firstSelectableDate && !_obj.isSelectable(_obj.date)) return;
+				
 				for (var i in _obj.clickCallbacks) {
 					_obj.clickCallbacks[i].call(_obj);
 				}
@@ -677,7 +698,7 @@ jQuery(document).ready(function($) {
 		
 		Pickable.prototype.setFirstSelectableDate = function(firstSelectableDate) {
 			this.firstSelectableDate = firstSelectableDate;
-			if (this.firstSelectableDate > this.date) {
+			if (!this.isSelectable(this.date)) {
 				this.jqElemTd.addClass("util-jquery-date-picker-pickable-disabled")
 			}
 		};
@@ -846,6 +867,7 @@ jQuery(document).ready(function($) {
 					"href": "#"
 				}).append($("<i/>").addClass(this.iconClassNameOpen)).click(function(e) {
 					e.preventDefault();
+					e.stopPropagation();
 					//hide other Datepicker
 					if (!_obj.jqElem.is(":visible")) {
 						$(".util-jquery-date-picker").hide();
@@ -1026,6 +1048,10 @@ jQuery(document).ready(function($) {
 			this.jqElemTd.empty();
 			this.jqElemTd.removeClass();
 			this.clickCallbacks = new Array();
+		};
+		
+		Day.prototype.isSelectable = function(date) {
+			return this.firstSelectableDate > date;
 		};
 		
 		var Week = function() {
@@ -1216,6 +1242,10 @@ jQuery(document).ready(function($) {
 				this.jqElemTd.removeClass(this.selectedPickableClassName);
 			}
 		};
+
+		Month.prototype.isSelectable = function(date) {
+			return DateUtils.isMonthBiggerOrEqual(date, this.firstSelectableDate);
+		};
 		
 		var MonthPicker = function(datePicker) {
 			this.datePicker = datePicker;
@@ -1239,7 +1269,7 @@ jQuery(document).ready(function($) {
 					currentRow = $('<tr/>').appendTo(this.jqElemTableBody);
 				}
 				
-				var date = new Date(this.datePicker.date.getFullYear(), i, 1);
+				var date = new Date(this.datePicker.date.getFullYear(), i, 1, 0, 0, 0);
 				var month = new Month(this);
 				this.months.push(month);
 				if (DateUtils.areDatesInSameMonth(date, this.datePicker.date)) {
@@ -1320,6 +1350,10 @@ jQuery(document).ready(function($) {
 				this.jqElemTd.removeClass(this.selectedPickableClassName);
 			}
 			
+		};
+
+		Year.prototype.isSelectable = function(date) {
+			return DateUtils.isYearBiggerOrEqual(date, this.firstSelectableDate);
 		};
 		
 		var YearPicker = function(datePicker) {
@@ -1437,6 +1471,10 @@ jQuery(document).ready(function($) {
 			var fullYear = this.date.getFullYear();
 			var startYear = fullYear - (fullYear % 10);
 			return startYear + " - " + "\n" + (startYear + 9);
+		};
+		
+		Decade.prototype.isSelectable = function(date) {
+			return DateUtils.isDecadeBiggerOrEqual(date, this.firstSelectableDate);
 		};
 		
 		var DecadePicker = function(datePicker) {
