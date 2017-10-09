@@ -17,6 +17,13 @@ jQuery(document).ready(function($) {
 					&& date1.getFullYear() == date2.getFullYear();
 		};
 		
+		DateUtils.isDayBiggerOrEqual = function(date1, date2) {
+			if (null == date1 || null == date2) return false;
+			
+			return date1.getDate() >= date2.getDate() && date1.getMonth() >= date2.getMonth()
+					&& date1.getFullYear() >= date2.getFullYear();
+		};
+		
 		DateUtils.areDatesInSameMonth = function(date1, date2) {
 			if (null == date1 || null == date2) return false;
 			return date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear();
@@ -25,7 +32,7 @@ jQuery(document).ready(function($) {
 		DateUtils.isMonthBiggerOrEqual = function(date1, date2) {
 			if (null == date1 || null == date2) return false;
 			
-			return date1.getMonth() >= date2.getMonth() && date1.getFullYear() == date2.getFullYear();
+			return date1.getMonth() >= date2.getMonth() && date1.getFullYear() >= date2.getFullYear();
 		};
 		
 		DateUtils.isYearBiggerOrEqual = function(date1, date2) {
@@ -836,6 +843,7 @@ jQuery(document).ready(function($) {
 			this.firstSelectableDate = this.parser.parse(jqElemInput.data("first-selectable-date"));
 			this.init();
 			this.jqElemInput.data('datepicker', this);
+			this.jqElemInput.trigger('initialized');
 		};
 		
 		DatePicker.prototype.MODE_DAY = 'day';
@@ -1051,7 +1059,7 @@ jQuery(document).ready(function($) {
 		};
 		
 		Day.prototype.isSelectable = function(date) {
-			return this.firstSelectableDate > date;
+			return DateUtils.isDayBiggerOrEqual(date, this.firstSelectableDate);
 		};
 		
 		var Week = function() {
@@ -1574,6 +1582,7 @@ jQuery(document).ready(function($) {
 			new window.n2n.DatePicker(elem);
 		});
 	};
+	
 	
 	if (n2n != null) {
 		n2n.dispatch.registerCallback(initFunction);
