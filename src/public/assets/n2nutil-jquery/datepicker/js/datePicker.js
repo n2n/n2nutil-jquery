@@ -1575,7 +1575,6 @@ jQuery(document).ready(function($) {
 		});
 	};
 	
-	
 	if (n2n != null) {
 		n2n.dispatch.registerCallback(initFunction);
 	}
