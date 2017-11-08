@@ -25,7 +25,8 @@ jQuery(document).ready(function($) {
 		DateUtils.isMonthBiggerOrEqual = function(date1, date2) {
 			if (null == date1 || null == date2) return false;
 			
-			return date1.getMonth() >= date2.getMonth() && date1.getFullYear() == date2.getFullYear();
+			return (date1.getMonth() >= date2.getMonth() && date1.getFullYear() == date2.getFullYear()) 
+					|| date1.getFullYear() > date2.getFullYear();
 		};
 		
 		DateUtils.isYearBiggerOrEqual = function(date1, date2) {
@@ -673,6 +674,7 @@ jQuery(document).ready(function($) {
 		
 		Pickable.prototype.selectedPickableClassName = "util-jquery-date-picker-pickable-selected";
 		Pickable.prototype.currentPickableClassName = "util-jquery-date-picker-pickable-current";
+		Pickable.prototype.disabledPickableClassName = "util-jquery-date-picker-pickable-disabled";
 		
 		Pickable.prototype.init = function() {
 			var _obj = this;
@@ -684,7 +686,7 @@ jQuery(document).ready(function($) {
 				for (var i in _obj.clickCallbacks) {
 					_obj.clickCallbacks[i].call(_obj);
 				}
-			}).addClass("util-jquery-date-picker-pickable").removeClass("util-jquery-date-picker-pickable-disabled");
+			}).addClass("util-jquery-date-picker-pickable").removeClass(this.disabledPickableClassName);
 			this.clickCallbacks = new Array();
 		};
 		
@@ -699,7 +701,7 @@ jQuery(document).ready(function($) {
 		Pickable.prototype.setFirstSelectableDate = function(firstSelectableDate) {
 			this.firstSelectableDate = firstSelectableDate;
 			if (!this.isSelectable(this.date)) {
-				this.jqElemTd.addClass("util-jquery-date-picker-pickable-disabled")
+				this.jqElemTd.addClass(this.disabledPickableClassName)
 			}
 		};
 
@@ -1051,7 +1053,7 @@ jQuery(document).ready(function($) {
 		};
 		
 		Day.prototype.isSelectable = function(date) {
-			return this.firstSelectableDate > date;
+			return this.firstSelectableDate <= date;
 		};
 		
 		var Week = function() {
@@ -1236,6 +1238,12 @@ jQuery(document).ready(function($) {
 				this.jqElemTd.removeClass(this.currentPickableClassName);
 			}
 			
+			if (this.isSelectable(date)) {
+				this.jqElemTd.removeClass(this.disabledPickableClassName);
+			} else {
+				this.jqElemTd.addClass(this.disabledPickableClassName);
+			}
+			
 			if (DateUtils.areDatesInSameMonth(date, selectedDate)) {
 				this.jqElemTd.addClass(this.selectedPickableClassName);
 			} else {
@@ -1342,6 +1350,12 @@ jQuery(document).ready(function($) {
 				this.jqElemTd.addClass(this.currentPickableClassName);
 			} else {
 				this.jqElemTd.removeClass(this.currentPickableClassName);
+			}
+			
+			if (this.isSelectable(date)) {
+				this.jqElemTd.removeClass(this.disabledPickableClassName);
+			} else {
+				this.jqElemTd.addClass(this.disabledPickableClassName);
 			}
 			
 			if (DateUtils.areDatesInSameYear(date, selectedDate)) {
@@ -1458,6 +1472,12 @@ jQuery(document).ready(function($) {
 				this.jqElemTd.addClass(this.currentPickableClassName);
 			} else {
 				this.jqElemTd.removeClass(this.currentPickableClassName);
+			}
+			
+			if (this.isSelectable(date)) {
+				this.jqElemTd.removeClass(this.disabledPickableClassName);
+			} else {
+				this.jqElemTd.addClass(this.disabledPickableClassName);
 			}
 			
 			if (DateUtils.areDatesInSameDecade(date, selectedDate)) {
