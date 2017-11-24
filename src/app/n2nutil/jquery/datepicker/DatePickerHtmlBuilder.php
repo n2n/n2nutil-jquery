@@ -6,7 +6,6 @@ use n2n\l10n\N2nLocale;
 use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\l10n\DateTimeFormat;
 use n2n\impl\web\ui\view\html\HtmlElement;
-use n2nutil\jquery\datepicker\DatePickerUtils;
 use n2n\impl\web\ui\view\html\HtmlBuilderMeta;
 
 class DatePickerHtmlBuilder {
