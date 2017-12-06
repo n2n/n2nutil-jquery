@@ -8,6 +8,7 @@ use n2n\web\dispatch\mag\UiOutfitter;
 use n2n\web\ui\UiComponent;
 use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2nutil\jquery\datepicker\DatePickerHtmlBuilder;
+use n2n\impl\web\ui\view\html\HtmlElement;
 
 class DateTimePickerMag extends DateTimeMag {
 	
@@ -20,10 +21,13 @@ class DateTimePickerMag extends DateTimeMag {
 		$attrs = HtmlUtils::mergeAttrs($uiOutfitter->buildAttrs(UiOutfitter::NATURE_TEXT|UiOutfitter::NATURE_MAIN_CONTROL),
 				$this->inputAttrs);
 		
+		$attrs = HtmlUtils::mergeAttrs($attrs, array('data-selector-opener' => 'n2nutil-jquery-datepicker-opener'));
+		
 		$dpHtml = new DatePickerHtmlBuilder($view);
 		
-		$elemOpener = new HtmlElement()
+		return new HtmlElement('span', null, array(
+				$dpHtml->getFormDatePicker($propertyPath, $attrs),
+				new HtmlElement('span', array('class' => 'n2nutil-jquery-datepicker-opener'), new HtmlElement('i', array('class' => 'fa fa-calendar'), ''))));
 		
-		return new Raw($dpHtml->getFormDatePicker($propertyPath, $attrs) . $elemOpener);
 	}
 }
