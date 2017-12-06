@@ -866,7 +866,15 @@ jQuery(document).ready(function($) {
 			this.parseInputVal();
 			
 			if (null !== this.openerSelector) {
-				var jqElemOpener = $(this.openerSelector).first();
+				var jqElemOpener = this.jqElemInput.next(this.openerSelector);
+				if (jqElemOpener.length === 0) {
+					var tmpElem = this.jqElemInput;
+					while (tmpElem.parent().length > 0 && jqElemOpener.length === 0) {
+						tmpElem = tmpElem.parent();
+						tmpElem.find(this.openerSelector).first();
+					}
+				}
+				
 				if (jqElemOpener.length === 0) {
 					throw "Invalid date picker opener selector: " + this.openerSelector;
 				}

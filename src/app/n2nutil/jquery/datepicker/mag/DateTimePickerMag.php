@@ -19,7 +19,11 @@ class DateTimePickerMag extends DateTimeMag {
 	public function createUiField(PropertyPath $propertyPath, HtmlView $view, UiOutfitter $uiOutfitter): UiComponent {
 		$attrs = HtmlUtils::mergeAttrs($uiOutfitter->buildAttrs(UiOutfitter::NATURE_TEXT|UiOutfitter::NATURE_MAIN_CONTROL),
 				$this->inputAttrs);
+		
 		$dpHtml = new DatePickerHtmlBuilder($view);
-		return $dpHtml->getFormDatePicker($propertyPath, $attrs);
+		
+		$elemOpener = new HtmlElement()
+		
+		return new Raw($dpHtml->getFormDatePicker($propertyPath, $attrs) . $elemOpener);
 	}
 }
