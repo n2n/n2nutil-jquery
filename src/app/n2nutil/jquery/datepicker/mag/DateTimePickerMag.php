@@ -21,7 +21,7 @@ class DateTimePickerMag extends DateTimeMag {
 		$attrs = HtmlUtils::mergeAttrs($uiOutfitter->buildAttrs(UiOutfitter::NATURE_TEXT|UiOutfitter::NATURE_MAIN_CONTROL),
 				$this->inputAttrs);
 		
-		$attrs = HtmlUtils::mergeAttrs($attrs, array('data-selector-opener' => 'n2nutil-jquery-datepicker-opener'));
+		$attrs = HtmlUtils::mergeAttrs($attrs, array('data-selector-opener' => '.n2nutil-jquery-datepicker-opener'));
 		
 		$dpHtml = new DatePickerHtmlBuilder($view);
 		
