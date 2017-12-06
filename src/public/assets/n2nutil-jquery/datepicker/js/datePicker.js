@@ -799,6 +799,8 @@ jQuery(document).ready(function($) {
 			this.iconClassNameNext = jqElemInput.data("icon-class-name-next") || null;
 			this.iconClassNamePrev = jqElemInput.data("icon-class-name-prev") || null;
 			this.iconClassNameOpen = jqElemInput.data("icon-class-name-open") || null;
+			this.openerSelector = jqElemInput.data("selector-opener") || null;
+			
 			this.options = new DateOptions();
 			
 			this.options.pseudo = jqElemInput.data("pseudo") || this.options.pseudo;
@@ -863,11 +865,22 @@ jQuery(document).ready(function($) {
 			var _obj = this;
 			this.parseInputVal();
 			
-			if (null !== this.iconClassNameOpen) {
+			if (null !== this.openerSelector) {
+				var jqElemOpener = $(this.openerSelector).first();
+				if (jqElemOpener.length === 0) {
+					throw "Invalid date picker opener selector: " + this.openerSelector;
+				}
+				
+				this.jqElemOpener = jqElemOpener;
+			} else if (null !== this.iconClassNameOpen) {
 				this.jqElemAOpener = $("<a/>", {
 					"class": "util-jquery-datepicker-opener rocket-control",
 					"href": "#"
-				}).append($("<i/>").addClass(this.iconClassNameOpen)).click(function(e) {
+				}).append($("<i/>").addClass(this.iconClassNameOpen)).insertAfter(this.jqElemInput); 
+			}
+			
+			if (null !== this.jqElemOpener) {
+				this.jqElemOpener.click(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					//hide other Datepicker
@@ -877,7 +890,7 @@ jQuery(document).ready(function($) {
 					} else {
 						_obj.hide();
 					}
-				}).insertAfter(this.jqElemInput); 
+				})
 			}
 			
 			this.jqElem = $("<div/>").addClass("util-jquery-date-picker").hide().css({
