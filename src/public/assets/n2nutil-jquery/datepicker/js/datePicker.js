@@ -866,20 +866,20 @@ jQuery(document).ready(function($) {
 			this.parseInputVal();
 			
 			if (null !== this.openerSelector) {
-				var jqElemOpener = this.jqElemInput.next(this.openerSelector);
-				if (jqElemOpener.length === 0) {
+				var jqElemAOpener = this.jqElemInput.next(this.openerSelector);
+				if (jqElemAOpener.length === 0) {
 					var tmpElem = this.jqElemInput;
-					while (tmpElem.parent().length > 0 && jqElemOpener.length === 0) {
+					while (tmpElem.parent().length > 0 && jqElemAOpener.length === 0) {
 						tmpElem = tmpElem.parent();
 						tmpElem.find(this.openerSelector).first();
 					}
 				}
 				
-				if (jqElemOpener.length === 0) {
+				if (jqElemAOpener.length === 0) {
 					throw "Invalid date picker opener selector: " + this.openerSelector;
 				}
 				
-				this.jqElemOpener = jqElemOpener;
+				this.jqElemAOpener = jqElemAOpener;
 			} else if (null !== this.iconClassNameOpen) {
 				this.jqElemAOpener = $("<a/>", {
 					"class": "util-jquery-datepicker-opener rocket-control",
@@ -887,8 +887,8 @@ jQuery(document).ready(function($) {
 				}).append($("<i/>").addClass(this.iconClassNameOpen)).insertAfter(this.jqElemInput); 
 			}
 			
-			if (null !== this.jqElemOpener) {
-				this.jqElemOpener.click(function(e) {
+			if (null !== this.jqElemAOpener) {
+				this.jqElemAOpener.click(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					//hide other Datepicker
