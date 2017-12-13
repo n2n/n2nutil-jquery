@@ -53,7 +53,7 @@ class DatePickerHtmlBuilder {
 		$html = $this->view->getHtmlBuilder();
 		$html->meta()->addLibrary(new JQueryLibrary(3));
 		$html->meta()->bodyEnd()->addJs('js/ajah.js', 'n2n\impl\web\ui');
-		$html->meta()->addJs('datepicker/js/datePicker.js', 'n2nutil', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
-		$html->meta()->addCss('datepicker/css/datePicker.css', 'screen', 'n2nutil');
+		$html->meta()->addJs('datepicker/js/datePicker.js', 'n2nutil\jquery', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
+		$html->meta()->addCss('datepicker/css/datePicker.css', 'screen', 'n2nutil\jquery');
 	}
 }
