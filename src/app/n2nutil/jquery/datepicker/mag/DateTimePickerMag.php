@@ -8,26 +8,39 @@ use n2n\web\dispatch\mag\UiOutfitter;
 use n2n\web\ui\UiComponent;
 use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2nutil\jquery\datepicker\DatePickerHtmlBuilder;
-use n2n\impl\web\ui\view\html\HtmlElement;
 
 class DateTimePickerMag extends DateTimeMag {
-	
+
+	const DATEPICKER_OPENER_CLASS = 'n2nutil-jquery-datepicker-opener';
+
+	private $addonUiElement;
+
+	public function __construct($label, UiComponent $addonUiElement = null, $dateStyle = null, $timeStyle = null, $icuPattern = null, $value = null, $mandatory = false, $inputAttrs = null) {
+		parent::__construct($label, $dateStyle, $timeStyle, $icuPattern, $value, $mandatory, $inputAttrs);
+		$this->addonUiElement = $addonUiElement;
+	}
+
 	/**
 	 * @param PropertyPath $propertyPath
 	 * @param HtmlView $view
 	 * @return UiComponent
 	 */
 	public function createUiField(PropertyPath $propertyPath, HtmlView $view, UiOutfitter $uiOutfitter): UiComponent {
-		$attrs = HtmlUtils::mergeAttrs($uiOutfitter->buildAttrs(UiOutfitter::NATURE_TEXT|UiOutfitter::NATURE_MAIN_CONTROL),
-				$this->inputAttrs);
-		
-		$attrs = HtmlUtils::mergeAttrs($attrs, array('data-selector-opener' => '.n2nutil-jquery-datepicker-opener'));
-		
+		$datePickerAttrs = HtmlUtils::mergeAttrs($uiOutfitter->buildAttrs(
+			UiOutfitter::NATURE_TEXT|UiOutfitter::NATURE_MAIN_CONTROL), $this->inputAttrs);
+
 		$dpHtml = new DatePickerHtmlBuilder($view);
-		
-		return new HtmlElement('span', null, array(
-				$dpHtml->getFormDatePicker($propertyPath, $attrs),
-				new HtmlElement('span', array('class' => 'n2nutil-jquery-datepicker-opener'), new HtmlElement('i', array('class' => 'fa fa-calendar'), ''))));
-		
+		if (null === $this->addonUiElement) {
+			return $dpHtml->getFormDatePicker($propertyPath, $datePickerAttrs);
+		}
+
+		$datePickerAttrs = HtmlUtils::mergeAttrs($datePickerAttrs,
+				array('data-selector-opener' => '.' . self::DATEPICKER_OPENER_CLASS));
+
+		$addonWrapperElement = $uiOutfitter->buildElement(UiOutfitter::EL_NATURE_CONTROL_ADDON_WRAPPER,
+				array('class' => self::DATEPICKER_OPENER_CLASS), $this->addonUiElement);
+
+		return $uiOutfitter->buildElement(UiOutfitter::EL_NATRUE_CONTROL_ADDON_SUFFIX_WRAPPER,
+				null, array($dpHtml->getFormDatePicker($propertyPath, $datePickerAttrs), $addonWrapperElement));
 	}
 }

@@ -29,7 +29,7 @@ class JQueryLibrary extends LibraryAdapter {
 				$jsName = 'jquery-3.1.1.min.js';
 		}
 		
-		$htmlMeta->addJs($jsName, 'n2nutil\jquery', false, false, null,
+		$htmlMeta->addJs($jsName, 'n2nutil', false, false, null,
 				($this->bodyEnd ? HtmlBuilderMeta::TARGET_BODY_END : HtmlBuilderMeta::TARGET_HEAD));
 	}	
 }
