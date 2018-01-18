@@ -26,7 +26,7 @@ class DateTimePickerMag extends DateTimeMag {
 	 * @return UiComponent
 	 */
 	public function createUiField(PropertyPath $propertyPath, HtmlView $view, UiOutfitter $uiOutfitter): UiComponent {
-		$datePickerAttrs = HtmlUtils::mergeAttrs($uiOutfitter->buildAttrs(
+		$datePickerAttrs = HtmlUtils::mergeAttrs($uiOutfitter->createAttrs(
 			UiOutfitter::NATURE_TEXT|UiOutfitter::NATURE_MAIN_CONTROL), $this->inputAttrs);
 
 		$dpHtml = new DatePickerHtmlBuilder($view);
@@ -37,10 +37,10 @@ class DateTimePickerMag extends DateTimeMag {
 		$datePickerAttrs = HtmlUtils::mergeAttrs($datePickerAttrs,
 				array('data-selector-opener' => '.' . self::DATEPICKER_OPENER_CLASS));
 
-		$addonWrapperElement = $uiOutfitter->buildElement(UiOutfitter::EL_NATURE_CONTROL_ADDON_WRAPPER,
+		$addonWrapperElement = $uiOutfitter->createElement(UiOutfitter::EL_NATURE_CONTROL_ADDON_WRAPPER,
 				array('class' => self::DATEPICKER_OPENER_CLASS), $this->addonUiElement);
 
-		return $uiOutfitter->buildElement(UiOutfitter::EL_NATRUE_CONTROL_ADDON_SUFFIX_WRAPPER,
+		return $uiOutfitter->createElement(UiOutfitter::EL_NATRUE_CONTROL_ADDON_SUFFIX_WRAPPER,
 				null, array($dpHtml->getFormDatePicker($propertyPath, $datePickerAttrs), $addonWrapperElement));
 	}
 }
