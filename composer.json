@@ -4,7 +4,7 @@
     "description": "jquery utils for n2n",
     "keywords": ["n2n","jquery"],
     "homepage": "https://n2n.rocks/",
-    "license": "GNU LGPL",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Thomas Günther",
