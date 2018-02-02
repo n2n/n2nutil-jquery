@@ -4,12 +4,10 @@ namespace n2nutil\jquery\datepicker;
 use n2n\impl\web\ui\view\html\HtmlElement;
 use n2n\web\dispatch\map\PropertyPath;
 use n2n\impl\web\dispatch\ui\Form;
-use n2nutil\jquery\datepicker\DatePickerUtils;
 use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\reflection\CastUtils;
 use n2n\impl\web\dispatch\property\DateTimeProperty;
 use n2n\l10n\L10nUtils;
-use n2n\web\dispatch\target\build\ParamHandler;
 
 class InputDatePickerFactory {
 	private $form;

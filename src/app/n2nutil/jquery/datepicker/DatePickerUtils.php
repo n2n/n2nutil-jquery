@@ -16,8 +16,8 @@ class DatePickerUtils {
 		return DateTimeFormat::createDateTimeInstance($locale, $dateStyle, $timeStyle, $timeZone)->getPattern();
 	}
 	/**
-	 * @param Locale $locale
-	 * @return \thomas\model\DatePickerOptionsFactory
+	 * @param N2nLocale $locale
+	 * @return \n2nutil\jquery\datepicker\DatePickerOptionsFactory
 	 */
 	public static function getDatePickerOptionsFactory(N2nLocale $locale, \DateTimeZone $timeZone = null) {
 		if (L10n::getL10nConfig()->isEnabled()) {
