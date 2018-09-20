@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+(function($) {
 	if (!window.n2n) {
 		window.n2n = new Object();
 	}
@@ -1621,4 +1621,26 @@ jQuery(document).ready(function($) {
 	}
 	
 	initFunction();
-});
+	
+	if (typeof Jhtml !== 'undefined') {
+		Jhtml.ready(function (elements) {
+			$(elements).find(".util-jquery-datepicker").each(function () {
+				var elem = $(this);
+				if (elem.data("initialized-util-jquery-datepicker")) return;
+				elem.data("initialized-util-jquery-datepicker", true);
+				new window.n2n.DatePicker(elem);
+			});
+		});
+
+		
+	} else {
+		$(document).ready(function() {
+			$(".util-jquery-datepicker").each(function () {
+				var elem = $(this);
+				if (elem.data("initialized-util-jquery-datepicker")) return;
+				elem.data("initialized-util-jquery-datepicker", true);
+				new window.n2n.DatePicker(elem);
+			});
+		});
+	}
+})(jQuery);
