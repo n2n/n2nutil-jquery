@@ -44,7 +44,7 @@ class IcuDatePickerOptionsFactory implements DatePickerOptionsFactory {
 	}
 	
 	private function getTimeZonePatterns(IcuPatternChecker $patternChecker) {
-		if (null == ($timeZonePatterns = $patternChecker->getTimeZonePatternParts())) return null;
+		if (null == ($timeZonePatternParts = $patternChecker->getTimeZonePatternParts())) return null;
 		$timeZonePatterns = array();
 		foreach ($timeZonePatternParts as $patternPart) {
 			$simpleDateTimeFormat = new SimpleDateTimeFormat($this->locale, $patternPart, $this->timeZone);

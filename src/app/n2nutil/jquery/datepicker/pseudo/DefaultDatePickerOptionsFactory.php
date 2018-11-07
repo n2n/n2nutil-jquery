@@ -30,7 +30,8 @@ class DefaultDatePickerOptionsFactory implements DatePickerOptionsFactory {
 	}
 
 	private function getTimeZonePatterns(DefaultPatternChecker $patternChecker) {
-		if (null == ($timeZonePatterns = $patternChecker->getTimeZonePatternParts())) return null;
+		if (null == ($timeZonePatternParts = $patternChecker->getTimeZonePatternParts())) return null;
+		
 		$timeZonePatterns = array();
 		foreach ($timeZonePatternParts as $patternPart) {
 			$now = new \DateTime();
