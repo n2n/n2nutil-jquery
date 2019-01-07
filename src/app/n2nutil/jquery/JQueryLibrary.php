@@ -4,7 +4,7 @@ namespace n2nutil\jquery;
 use n2n\impl\web\ui\view\html\HtmlView;
 use n2n\impl\web\ui\view\html\LibraryAdapter;
 use n2n\impl\web\ui\view\html\HtmlBuilderMeta;
-use n2n\reflection\ArgUtils;
+use n2n\util\type\ArgUtils;
 
 class JQueryLibrary extends LibraryAdapter {
 	protected $version;
