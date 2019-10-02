@@ -181,10 +181,10 @@
 									}
 									_obj.lastFilter = singleValue;
 									_obj.setValue(singleValue);
+								},"error": function() {
+									_obj.lastFilter = singleValue;
+									_obj.setValue(singleValue);
 								}
-							}).error(function() {
-								_obj.lastFilter = singleValue;
-								_obj.setValue(singleValue);
 							});
 						}
 					} else {
