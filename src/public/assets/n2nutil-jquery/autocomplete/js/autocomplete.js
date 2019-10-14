@@ -538,7 +538,7 @@
 					var currentClassName = '';
 					var filteredOption = options[i];
 					var value = this.getValueForOption(filteredOption);
-					if (currentValues.indexOf(value) != -1) {
+					if (currentValues.indexOf(this.prepareForComperation(value)) != -1) {
 						currentClassName = ' ' + this.selectedClassName;
 					}
 					$("<li/>", {html: _obj.highlightOccurances(filteredOption), "class": "util-jquery-autocomplete-choice" + currentClassName}).hover(function() {
