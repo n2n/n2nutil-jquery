@@ -771,14 +771,14 @@
 			if (null !== this.datePicker.iconClassNameNext) {
 				this.jqElemNext.append($("<i/>", {"class": this.datePicker.iconClassNameNext}));
 			} else {
-				this.jqElemNext.text(this.datePicker.textNext);
+				this.jqElemNext.append(this.datePicker.textNext);
 			}
 			
 			//next Text or Icon
 			if (null !== this.datePicker.iconClassNamePrev) {
 				this.jqElemPrev.append($("<i/>", {"class": this.datePicker.iconClassNamePrev}));
 			} else {
-				this.jqElemPrev.text(this.datePicker.textPrev);
+				this.jqElemPrev.append(this.datePicker.textPrev);
 			}
 		};
 		
