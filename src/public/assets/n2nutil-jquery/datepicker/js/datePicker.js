@@ -81,6 +81,7 @@
 			}
 			return this.pseudo;
 		};
+		
 		DateOptions.prototype.getLocalizedDayOfWeek = function(date) {
 			return (date.getDay() - this.firstDayInWeek + 7) % 7;
 		};
@@ -88,7 +89,6 @@
 		DateOptions.prototype.getWeekDay = function(date) {
 			return this.weekDays[date.getDay()];
 		};
-
 
 		var SimpleDateFormatter = function(format, options) {
 			this.dateOptions = options || new DateOptions();
@@ -771,14 +771,14 @@
 			if (null !== this.datePicker.iconClassNameNext) {
 				this.jqElemNext.append($("<i/>", {"class": this.datePicker.iconClassNameNext}));
 			} else {
-				this.jqElemNext.text(this.datePicker.textNext);
+				this.jqElemNext.append(this.datePicker.textNext);
 			}
 			
 			//next Text or Icon
 			if (null !== this.datePicker.iconClassNamePrev) {
 				this.jqElemPrev.append($("<i/>", {"class": this.datePicker.iconClassNamePrev}));
 			} else {
-				this.jqElemPrev.text(this.datePicker.textPrev);
+				this.jqElemPrev.append(this.datePicker.textPrev);
 			}
 		};
 		
@@ -814,6 +814,7 @@
 			var pattern = jqElemInput.data('pattern') || 'MMM d, y';
 			this.formatter = new SimpleDateFormatter(pattern, this.options);
 			this.parser = new DateParser(pattern, this.options)
+			this.placement = jqElemInput.data("placement") || "auto";
 			
 			this.currentMode = jqElemInput.data("mode") || this.MODE_DECADE;
 			
@@ -992,7 +993,12 @@
 				this.currentPicker.assignNavigation(this.navigation);
 			}
 			//check Positions before - otherwise the document height may increase after showing the datepicker
-			var onTop = $(document).height() < this.jqElem.outerHeight() + this.jqElemInput.offset().top;
+			var onTop = false;
+			if (this.placement === null || this.placement === 'auto') {
+				onTop = $(document).height() < this.jqElem.outerHeight() + this.jqElemInput.offset().top;
+			} else if (this.placement === 'top') {
+				onTop = true;
+			}
 			this.jqElem.show();
 			if (onTop) {
 				//strange behaviour with position absolute -> the object gets 20px more height
