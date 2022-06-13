@@ -11,9 +11,11 @@ use n2nutil\jquery\JQueryLibrary;
 
 class DatePickerHtmlBuilder {
 	private $view; 
+	private $addCss;
 	
-	public function __construct(HtmlView $view) {
+	public function __construct(HtmlView $view, $addCss = true) {
 		$this->view = $view;
+		$this->addCss = $addCss;
 	}
 	
 	public function getDatePicker($dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null, 
@@ -22,7 +24,7 @@ class DatePickerHtmlBuilder {
 			$locale = $this->view->getRequest()->getN2nLocale();
 		}
 		$attrs = $this->extendAttrs($attrs);
-		$this->requireScripts($attrs['id']);
+		$this->requireScripts();
 		return new HtmlElement('input', HtmlUtils::mergeAttrs((array) $attrs, DatePickerUtils::getDatePickerOptionsFactory(
 					$locale, $timeZone)->createDatePickerOptions(DatePickerUtils::determinePattern($locale, $dateStyle, $timeStyle, 
 							$timeZone, $simpleFormat))->buildHtmlAttrs()));
@@ -54,6 +56,8 @@ class DatePickerHtmlBuilder {
 		$html->meta()->addLibrary(new JQueryLibrary(3));
 		$html->meta()->bodyEnd()->addJs('js/ajah.js', 'n2n\impl\web\ui');
 		$html->meta()->addJs('datepicker/js/datePicker.js', 'n2nutil\jquery', false, false, null, HtmlBuilderMeta::TARGET_BODY_END);
-		$html->meta()->addCss('datepicker/css/datePicker.css', 'screen', 'n2nutil\jquery');
+		if ($this->addCss) {
+			$html->meta()->addCss('datepicker/css/datePicker.css', 'screen', 'n2nutil\jquery');
+		}
 	}
 }
