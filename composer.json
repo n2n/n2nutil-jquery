@@ -22,7 +22,7 @@
 		}
 	},
 	"require" : {
-		"n2n/n2n-composer-module-installer" : "^7.1.3",
+		"n2n/n2n-composer-module-installer" : "^v7.1.6",
 		"n2n/n2n-web" : "^7.2.33"
 	},
 	"require-dev" : {
@@ -31,11 +31,6 @@
 	"autoload" : {
 		"psr-4" : {
 			"n2nutil\\jquery\\" : "src/app/n2nutil/jquery"
-		}
-	},
-	"autoload-dev" : {
-		"psr-4" : {
-			"n2nutil\\jquery\\" : "src/test/n2nutil/jquery"
 		}
 	}
 }
