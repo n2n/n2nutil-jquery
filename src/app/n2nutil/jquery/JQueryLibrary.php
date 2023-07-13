@@ -26,7 +26,7 @@ class JQueryLibrary extends LibraryAdapter {
 				$jsName = 'jquery-2.2.4.min.js';
 				break;
 			case 3:
-				$jsName = 'jquery-3.5.0.min.js';
+				$jsName = 'jquery-3.7.0.min.js';
 		}
 
 		$htmlMeta->addJs($jsName, 'n2nutil\jquery', false, false, null,
