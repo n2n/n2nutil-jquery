@@ -27,6 +27,8 @@ class DateTimeLiteralGenerator {
 	private $thursday;
 	private $friday;
 	private $saturday;
+	private \DateTime $am;
+	private \DateTime $pm;
 	
 	public function __construct(N2nLocale $locale = null) {
 		$this->locale = $locale; 
