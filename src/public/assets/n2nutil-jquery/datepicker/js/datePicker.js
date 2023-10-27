@@ -381,7 +381,7 @@
 
 		DateTimeInitialiser.prototype.setHours = function(hours) {
 			if (null !== this.hours) return;
-			this.hours = parseInt(hour);
+			this.hours = parseInt(hours);
 		};
 
 		DateTimeInitialiser.prototype.setMinutes = function(minutes) {
@@ -568,7 +568,7 @@
 				case 'e':
 				case 'ee':
 				case 'E':
-				case 'E':
+				case 'EE':
 					return this.FORMAT_PATTERN_ONE_DIGIT;
 				case 'eee':
 				case 'EEE':
