@@ -19,7 +19,7 @@ class DatePickerHtmlBuilder {
 	}
 	
 	public function getDatePicker($dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null, 
-			\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, N2nLocale $locale = null) {
+			?\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, ?N2nLocale $locale = null) {
 		if (null == $locale) {
 			$locale = $this->view->getRequest()->getN2nLocale();
 		}
@@ -31,7 +31,7 @@ class DatePickerHtmlBuilder {
 	}
 	
 	public function datePicker($dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null, 
-			\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, N2nLocale $locale = null) {
+			?\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, ?N2nLocale $locale = null) {
 		$this->view->out($this->getDatePicker($dateStyle, $timeStyle, $timeZone, $simpleFormat, $attrs, $locale));
 	}
 	

@@ -18,7 +18,7 @@ class InputDatePickerFactory {
 		$this->resolver = $this->form->getMappingPathResolver();
 	}
 	
-	public function create(PropertyPath $propertyPath, array $attrs = null) {
+	public function create(PropertyPath $propertyPath, ?array $attrs = null) {
 		$result = $this->resolver->analyze($propertyPath, array('n2n\impl\web\dispatch\property\DateTimeProperty'), false);
 		$dateTimeProperty = $result->getManagedProperty();
 		CastUtils::assertTrue($dateTimeProperty instanceof DateTimeProperty);

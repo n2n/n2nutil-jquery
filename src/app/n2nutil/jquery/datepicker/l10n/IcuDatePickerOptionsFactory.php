@@ -14,7 +14,7 @@ class IcuDatePickerOptionsFactory implements DatePickerOptionsFactory {
 	private $timeZone;
 	private $locale; 
 	
-	public function __construct(N2nLocale $locale, \DateTimeZone $timeZone = null) {
+	public function __construct(N2nLocale $locale, ?\DateTimeZone $timeZone = null) {
 		$this->locale = $locale;
 		$this->icuLiteralGenerator = new DateTimeLiteralGenerator($locale);
 		$this->timeZone = $timeZone;	

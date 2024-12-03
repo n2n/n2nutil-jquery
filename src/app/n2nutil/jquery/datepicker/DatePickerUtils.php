@@ -10,7 +10,7 @@ use n2n\l10n\L10n;
 
 class DatePickerUtils {
 	public static function determinePattern($locale, $dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null,
-			\DateTimeZone $timeZone = null, $simpleFormat = null) {
+			?\DateTimeZone $timeZone = null, $simpleFormat = null) {
 		if (null !== $simpleFormat) return $simpleFormat;
 		if (null === $timeStyle) return DateTimeFormat::createDateInstance($locale, $dateStyle, $timeZone)->getPattern();
 		return DateTimeFormat::createDateTimeInstance($locale, $dateStyle, $timeStyle, $timeZone)->getPattern();
@@ -19,7 +19,7 @@ class DatePickerUtils {
 	 * @param N2nLocale $locale
 	 * @return \n2nutil\jquery\datepicker\DatePickerOptionsFactory
 	 */
-	public static function getDatePickerOptionsFactory(N2nLocale $locale, \DateTimeZone $timeZone = null) {
+	public static function getDatePickerOptionsFactory(N2nLocale $locale, ?\DateTimeZone $timeZone = null) {
 		if (L10n::getL10nConfig()->isEnabled()) {
 			L10nUtils::ensureL10nsupportIsAvailable();
 			return new IcuDatePickerOptionsFactory($locale, $timeZone);

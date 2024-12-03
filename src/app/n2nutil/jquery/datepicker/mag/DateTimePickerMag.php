@@ -15,7 +15,7 @@ class DateTimePickerMag extends DateTimeMag {
 
 	private $addonUiElement;
 
-	public function __construct($label, UiComponent $addonUiElement = null, $dateStyle = null, $timeStyle = null, $icuPattern = null, $value = null, $mandatory = false, $inputAttrs = null) {
+	public function __construct($label, ?UiComponent $addonUiElement = null, $dateStyle = null, $timeStyle = null, $icuPattern = null, $value = null, $mandatory = false, $inputAttrs = null) {
 		parent::__construct($label, $dateStyle, $timeStyle, $icuPattern, $value, $mandatory, $inputAttrs);
 		$this->addonUiElement = $addonUiElement;
 	}

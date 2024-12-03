@@ -30,7 +30,7 @@ class DateTimeLiteralGenerator {
 	private \DateTime $am;
 	private \DateTime $pm;
 	
-	public function __construct(N2nLocale $locale = null) {
+	public function __construct(?N2nLocale $locale = null) {
 		$this->locale = $locale; 
 		$this->sunday = \DateTime::createFromFormat('j.n.Y', '29.12.2013');
 		$this->monday = \DateTime::createFromFormat('j.n.Y', '30.12.2013');

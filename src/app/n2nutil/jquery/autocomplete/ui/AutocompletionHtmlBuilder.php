@@ -12,7 +12,7 @@ class AutocompletionHtmlBuilder {
 		$this->view = $view;
 	}
 	
-	public function getFormAutocomplete($propertyExpression = null, $attrs = null, array $options = null) {
+	public function getFormAutocomplete($propertyExpression = null, $attrs = null, ?array $options = null) {
 		$this->requireScripts();
 		$attrs = $this->extendAttrs($attrs);
 		if (null !== $options) {
@@ -21,7 +21,7 @@ class AutocompletionHtmlBuilder {
 		return $this->view->getFormHtmlBuilder()->getInput($propertyExpression, $attrs);
 	}
 	
-	public function formAutocomplete($propertyExpression = null, $attrs = null, array $options = null) {
+	public function formAutocomplete($propertyExpression = null, $attrs = null, ?array $options = null) {
 		$this->view->out($this->getFormAutocomplete($propertyExpression, $attrs, $options));
 	}
 	
