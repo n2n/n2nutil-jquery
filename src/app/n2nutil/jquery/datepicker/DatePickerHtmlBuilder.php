@@ -4,7 +4,6 @@ namespace n2nutil\jquery\datepicker;
 use n2n\impl\web\ui\view\html\HtmlView;
 use n2n\l10n\N2nLocale;
 use n2n\impl\web\ui\view\html\HtmlUtils;
-use n2n\l10n\DateTimeFormat;
 use n2n\impl\web\ui\view\html\HtmlElement;
 use n2n\impl\web\ui\view\html\HtmlBuilderMeta;
 use n2nutil\jquery\JQueryLibrary;
@@ -18,7 +17,7 @@ class DatePickerHtmlBuilder {
 		$this->addCss = $addCss;
 	}
 	
-	public function getDatePicker($dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null, 
+	public function getDatePicker(string $dateStyle = null, $timeStyle = null,
 			?\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, ?N2nLocale $locale = null) {
 		if (null == $locale) {
 			$locale = $this->view->getRequest()->getN2nLocale();
@@ -30,7 +29,7 @@ class DatePickerHtmlBuilder {
 							$timeZone, $simpleFormat))->buildHtmlAttrs()));
 	}
 	
-	public function datePicker($dateStyle = DateTimeFormat::DEFAULT_DATE_STYLE, $timeStyle = null, 
+	public function datePicker(?string $dateStyle, $timeStyle = null,
 			?\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, ?N2nLocale $locale = null) {
 		$this->view->out($this->getDatePicker($dateStyle, $timeStyle, $timeZone, $simpleFormat, $attrs, $locale));
 	}
