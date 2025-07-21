@@ -17,7 +17,7 @@ class DatePickerHtmlBuilder {
 		$this->addCss = $addCss;
 	}
 	
-	public function getDatePicker(string $dateStyle = null, $timeStyle = null,
+	public function getDatePicker(?string $dateStyle = null, $timeStyle = null,
 			?\DateTimeZone $timeZone = null, $simpleFormat = null, $attrs = null, ?N2nLocale $locale = null) {
 		if (null == $locale) {
 			$locale = $this->view->getRequest()->getN2nLocale();
